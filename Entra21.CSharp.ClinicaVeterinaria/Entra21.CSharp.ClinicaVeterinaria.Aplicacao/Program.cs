@@ -1,7 +1,15 @@
+using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Função chamando para conectar ao diretorio do banco de dados
+builder.Services.AddDbContext<ClinicaVeterinariaContexto>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("SqlServer")));
 
 var app = builder.Build();
 
