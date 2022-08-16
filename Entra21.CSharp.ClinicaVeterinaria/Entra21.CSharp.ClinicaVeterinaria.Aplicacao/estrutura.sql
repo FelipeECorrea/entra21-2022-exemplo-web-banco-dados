@@ -1,5 +1,5 @@
 CREATE TABLE racas(
     id INTEGER PRIMARY KEY IDENTITY(1,1),
     nome VARCHAR(100),
-    especie VARCHAR(45)
+    especie VARCHAR(40)
 );
