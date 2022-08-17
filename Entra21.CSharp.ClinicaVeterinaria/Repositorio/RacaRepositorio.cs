@@ -16,6 +16,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio
            var raca = _contexto.Racas.Where(x => x.Id == id).FirstOrDefault();
 
             _contexto.Racas.Remove(raca);
+            _contexto.SaveChanges(); // Método para salvar após apagar o registro
         }
 
         public Raca ObterPorId(int id)
@@ -34,13 +35,14 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio
             raca.Especie = racaParaAlterar.Especie;
 
             _contexto.Update(raca);
+            _contexto.SaveChanges();
         }
 
         public void Cadastrar(Raca raca)
         {
             // INSERT INTO na tabela de racas
             _contexto.Racas.Add(raca);
-            _contexto.SaveChanges();
+            _contexto.SaveChanges(); // Método para salvar após apagar o registro
         }
 
         public List<Raca> ObterTodos()
