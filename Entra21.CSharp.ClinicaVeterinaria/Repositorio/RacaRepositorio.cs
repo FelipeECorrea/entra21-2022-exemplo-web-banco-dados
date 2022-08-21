@@ -5,7 +5,9 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio
 {
     public class RacaRepositorio : IRacaRepositorio
     {
+        // Essa linha aqui que permite fazer as coisas tudo no banco de forma mais simples
         private readonly ClinicaVeterinariaContexto _contexto;
+
         public RacaRepositorio(ClinicaVeterinariaContexto contexto)
         {
             _contexto = contexto;
@@ -13,17 +15,10 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio
 
         public void Apagar(int id)
         {
-           var raca = _contexto.Racas.Where(x => x.Id == id).FirstOrDefault();
-
-            _contexto.Racas.Remove(raca);
-            _contexto.SaveChanges(); // Método para salvar após apagar o registro
-        }
-
-        public Raca ObterPorId(int id)
-        {
             var raca = _contexto.Racas.Where(x => x.Id == id).FirstOrDefault();
 
-            return raca;
+            _contexto.Racas.Remove(raca);
+            _contexto.SaveChanges();
         }
 
         public void Atualizar(Raca racaParaAlterar)
@@ -40,9 +35,16 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio
 
         public void Cadastrar(Raca raca)
         {
-            // INSERT INTO na tabela de racas
+            // INSERT NA TABELA DE RAÇAS
             _contexto.Racas.Add(raca);
-            _contexto.SaveChanges(); // Método para salvar após apagar o registro
+            _contexto.SaveChanges();
+        }
+
+        public Raca ObterPorId(int id)
+        {
+            var raca = _contexto.Racas.Where(x => x.Id == id).FirstOrDefault();
+
+            return raca;
         }
 
         public List<Raca> ObterTodos()

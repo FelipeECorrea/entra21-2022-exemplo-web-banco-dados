@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Servico\Entra21.CSharp.ClinicaVeterinaria.Servico.csproj" />
+		<ProjectReference Include="..\Servico\Servico.csproj" />
 	</ItemGroup>
 
 </Project>

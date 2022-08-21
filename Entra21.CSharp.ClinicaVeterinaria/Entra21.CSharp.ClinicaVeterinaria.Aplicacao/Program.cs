@@ -6,10 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-// Função chamando para conectar ao diretorio do banco de dados
 builder.Services.AddDbContext<ClinicaVeterinariaContexto>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("SqlServer")));
+            builder.Configuration.GetConnectionString("SqlServer")));
 
 var app = builder.Build();
 
@@ -22,6 +21,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -30,9 +30,9 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.UseEndpoints(endpoints =>
+app.UseEndpoints(endpoint =>
 {
-    endpoints.MapControllerRoute(
+    endpoint.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
 });
