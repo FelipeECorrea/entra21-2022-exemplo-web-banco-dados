@@ -28,11 +28,10 @@
                 <td>@raca.Nome</td> <!-- Coluna específica para body-->
                 <td>@raca.Especie</td>
                 <td>
-                    <a asp-action="editar" asp-route-id="@raca.Id">Editar</a>
-                    <a asp-action="apagar" asp-route-id="@raca.Id">Apagar</a>
+                    <a asp-action="editar" asp-route-id="@raca.Id" class="btn btn-warning">Editar</a>
+                    <a asp-action="apagar" asp-route-id="@raca.Id" class="btn btn-danger">Apagar</a>
                 </td>
             </tr>
         }
-
     </tbody>
 </table>
