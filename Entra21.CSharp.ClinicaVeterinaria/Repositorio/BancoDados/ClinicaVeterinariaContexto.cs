@@ -7,6 +7,10 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados
     public class ClinicaVeterinariaContexto : DbContext
     {
         public DbSet<Raca> Racas { get; set; }
+        public DbSet<ResponsavelContato> ResponsavelContatos { get; set; }
+        public DbSet<Responsavel> Responsaveis { get; set; }
+        public DbSet<Pet> Pets { get; set; }
+        public DbSet<Veterinario> Veterinarios { get; set; }
 
         public ClinicaVeterinariaContexto(
             DbContextOptions<ClinicaVeterinariaContexto> options)
@@ -24,18 +28,17 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados
             * 2ª etapa - Criar o mapemanto da entidade para tabela RacaMapeamento.cs
             * 3ª etapa - Registrar o mapeamento no próprio Contexto
             * 4ª etapa - Gerar a migration
-            *      dotnet ef migrations add NomeMigration
-            *      
-            *      // comando em aula com o professor
-            *      
             *      dotnet ef migrations add AdicionarRacaTabela --project Repositorio --startup-project Entra21.CSharp.ClinicaVeterinaria.Aplicacao
-            *      
             * 5ª etapa - A migration poderá ser aplicada de duas formas:
             *   - executar comando para aplicar a migration sem a
             *          necessidade de executar a aplicação
-            *          dotnet ef database update --update Repositorio --startup-project Entra21.CSharp.ClinicaVeterinaria.Aplicacao
+            *          dotnet ef database update --project Repositorio --startup-project Entra21.CSharp.ClinicaVeterinaria.Aplicacao
             *   - executar a aplicação irá aplicar a migration */
             modelBuilder.ApplyConfiguration(new RacaMapeamento());
+            modelBuilder.ApplyConfiguration(new VeterinarioMapeamento());
+            modelBuilder.ApplyConfiguration(new ResponsavelMapeamento());
+            modelBuilder.ApplyConfiguration(new ContatoMapeamento());
+            modelBuilder.ApplyConfiguration(new PetMapeamento());
         }
     }
 }
